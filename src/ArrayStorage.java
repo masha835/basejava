@@ -69,8 +69,8 @@ public class ArrayStorage {
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index != -1) {
-            int res = counter - 1;
-            storage[index] = null;
+            counter = counter - 1;
+            storage[index] = storage[counter];
         }
         //counter--;
         //storage[counter] = null;
@@ -87,4 +87,5 @@ public class ArrayStorage {
         return counter;
     }
 }
+
 
