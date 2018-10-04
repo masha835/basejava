@@ -13,31 +13,26 @@ public class ArrayStorage {
     }
 
     public void update(Resume r) {
-        int index = getIndex(r.uuid);
+        int index = getIndex(r.getUuid());
         if (index == -1) {
             System.out.println("Не существует");
         } else {
             storage[index] = r;
         }
-
     }
-    
+
     public void save(Resume r) {
-
-        if (getIndex(r.uuid) != -1) {
+        if (getIndex(r.getUuid()) != -1) {
             System.out.println("Резюме существует");
-
         } else if (counter >= storage.length) {
             System.out.println("Места больше нет");
         } else {
             storage[counter] = r;
             counter++;
         }
-
     }
 
     public Resume get(String uuid) {
-
         int index = getIndex(uuid);
         if (index != -1) {
             return storage[index];
@@ -50,14 +45,11 @@ public class ArrayStorage {
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index != -1) {
-            counter = counter - 1;
-            if(counter ==0) {
-                storage[index]= null;
-            }else{
-                storage[index] = storage[counter];
+            counter--;
+            storage[index] = storage[counter];
+            storage[counter] = null;
             }
-        }
-        else {
+         else {
             System.out.println("Ошибка поиска резюме для удаления");
         }
     }
@@ -72,9 +64,8 @@ public class ArrayStorage {
 
     private int getIndex(String uuid) {
         for (int i = 0; i < counter; i++) {
-            if ((storage[i].uuid).equals(uuid)) {
+            if ((storage[i].getUuid()).equals(uuid)) {
                 return i;
-                // метод getIndex сравнивает переданное uuid каждого элемента массива storage и возвращает целочисленный индекс найденного элемента
             }
         }
         return -1;
