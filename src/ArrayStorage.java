@@ -16,7 +16,6 @@ public class ArrayStorage {
         int index = getIndex(r.uuid);
         if (index == -1) {
             System.out.println("Не существует");
-
         } else {
             storage[index] = r;
         }
