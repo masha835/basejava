@@ -1,9 +1,14 @@
 import java.util.Arrays;
 
+package ru.javawebinar.basejava.storage;
+
+import ru.javawebinar.basejava.model.Resume;
+
+
 /**
  * Array based storage for Resumes
  */
-public class ArrayStorage {
+public class ArrayStorage extends {
     private Resume[] storage = new Resume[10_000];
     private int counter = 0;
 
@@ -55,14 +60,14 @@ public class ArrayStorage {
     }
 
     public Resume[] getAll() {
-        return Arrays.copyOf(storage, counter);
+        return Arrays.copyOf(storage,0, counter);
     }
 
     public int size() {
         return counter;
     }
 
-    private int getIndex(String uuid) {
+    protected int getIndex(String uuid) {
         for (int i = 0; i < counter; i++) {
             if ((storage[i].getUuid()).equals(uuid)) {
                 return i;

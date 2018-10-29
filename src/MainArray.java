@@ -2,10 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Interactive test for ArrayStorage implementation
- * (just run, no need to understand)
- */
 public class MainArray {
     private final static ArrayStorage ARRAY_STORAGE = new ArrayStorage();
 
@@ -56,8 +52,7 @@ public class MainArray {
 
                 case "exit":
                     return;
-                default:
-                    System.out.println("Неверная команда.");
+                default: System.out.println("Неверная команда.");
                     break;
             }
         }
