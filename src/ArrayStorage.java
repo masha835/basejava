@@ -8,7 +8,7 @@ import ru.javawebinar.basejava.model.Resume;
 /**
  * Array based storage for Resumes
  */
-public class ArrayStorage extends {
+public class ArrayStorage extends AbstractArrayStorage {
     private Resume[] storage = new Resume[10_000];
     private int counter = 0;
 
@@ -20,7 +20,7 @@ public class ArrayStorage extends {
     public void update(Resume r) {
         int index = getIndex(r.getUuid());
         if (index == -1) {
-            System.out.println("Не существует");
+            System.out.println("Резюме" + r.getUuid() + "не существует");
         } else {
             storage[index] = r;
         }
