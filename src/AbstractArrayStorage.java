@@ -24,28 +24,18 @@ return size;
      storage[index] = r;
    }
  }
+ 
+ public Resume[] getAll() {
+  return Array.copyOfRange(storage, 0, size);
+ }
   
  public void delete(String uuid) {
-   int index = getIndex(uuid);
-   if(index == -1) {
-     System.out.println("Резюме по " + uuid + "не существует");
-   } else {
-     storage[index] = storage[size -1];
-     storage[size -1] = null;
-     size--;
-   }
- }
-
-public Resume get(String uuid) { 
-int index = getIndex(uuid); 
-if (index != -1) { 
-return storage[index]; 
-} else { 
-System.out.println("Ошибка поиска резюме для вызова"); 
-return null; 
-} 
-return storage[index]; 
-} 
-
-protected abstract int getIndex(String uuid); 
+  int index = getIndex(uuid);
+  if(index == -1){
+   System.out.println("Резюме по " + uuid + "не существует");
+  } else {
+    storage[index] = storage[size -1];
+    storage[size -1] = null;
+    size--;
+  }
 }
