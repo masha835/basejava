@@ -24,11 +24,11 @@ public class Resume implements Comparable<Resume>{
 
  // Resume resume = (Resume) o; 
 
- // return uuid.equals(resume.uuid); 
+  return uuid.equals(resume.uuid);
 } 
 
- // @Override 
- // public int hashCode() { 
+  @Override
+ public int hashCode() {
  return uuid.hashCode(); 
  // } 
 
