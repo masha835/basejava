@@ -38,4 +38,15 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         searchKey.setUuid(uuid);
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }
+
+    @Override
+    protected int doSave(Resume r) {
+
+    }
+
+    @Override
+
+    protected int doDelete (String uuid) {
+
+    }
 }

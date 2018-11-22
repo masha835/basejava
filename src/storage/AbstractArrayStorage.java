@@ -44,16 +44,13 @@ public abstract class AbstractArrayStorage implements Storage {
             size--;
         }
     }
-        public void clear() {
-            Arrays.fill(storage, 0, size, null);
-            size = 0;
-        }
 
 
-    protected abstract String doSave(Resume r);
 
-    protected abstract int doDelete(String uuid);
+    protected abstract void doSave(Resume r);
 
-    protected abstract int getIndex(String uuid);
+    protected abstract void doDelete(String uuid);
+
+    protected abstract void getIndex(String uuid);
 
 }
