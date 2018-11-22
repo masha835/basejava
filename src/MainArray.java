@@ -1,3 +1,5 @@
+import storage.ArrayStorage;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -52,7 +54,8 @@ public class MainArray {
 
                 case "exit":
                     return;
-                default: System.out.println("Неверная команда.");
+                default:
+                    System.out.println("Неверная команда.");
                     break;
             }
         }
