@@ -59,6 +59,8 @@ public class ArrayStorage extends AbstractArrayStorage {
         }
     }
 
+
+
     public Resume[] getAll() {
         return Arrays.copyOf(storage,0, counter);
     }
