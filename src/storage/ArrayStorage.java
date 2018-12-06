@@ -1,5 +1,6 @@
 package storage;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import model.Resume;
@@ -50,9 +51,14 @@ public class ArrayStorage extends AbstractArrayStorage {
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index != -1) {
-            counter--;
-            storage[index] = storage[counter];
-            storage[counter] = null;
+           // counter--;
+            //storage[index] = storage[counter];
+           // storage[counter] = null;
+            System.arraycopy(storage, index, storage, index, size);
+            //Arrays.sort(storage);
+           // Arrays.binarySearch(storage, index);
+            System.out.println(index);
+
             }
          else {
             System.out.println("Ошибка поиска резюме для удаления");
@@ -70,12 +76,9 @@ public class ArrayStorage extends AbstractArrayStorage {
     }
 
     protected int getIndex(String uuid) {
-        for (int i = 0; i < counter; i++) {
-            if ((storage[i].getUuid()).equals(uuid)) {
-                return i;
-            }
-        }
-        return -1;
+        Resume searchKey = new Resume();
+        searchKey.setUuid(uuid);
+        return Arrays.binarySearch(storage, 0, counter, searchKey);
     }
     protected int doSave(Resume r) {
 
