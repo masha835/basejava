@@ -46,7 +46,7 @@ public abstract class AbstractArrayStorage implements Storage {
 
     protected abstract void doSave(Resume r);
 
-    protected abstract void doDelete(String uuid);
+   // protected abstract void doDelete(String uuid);
 
     protected abstract void getIndex(String uuid);
 
