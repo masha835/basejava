@@ -9,7 +9,7 @@ import model.Resume;
  * Array based storage for Resumes
  */
 public class ArrayStorage extends AbstractArrayStorage {
-    private Resume[] storage = new Resume[10_000];
+   // private Resume[] storage = new Resume[10_000];
     private int counter = 0;
 
    // public void clear() {
