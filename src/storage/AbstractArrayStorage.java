@@ -23,7 +23,7 @@ public abstract class AbstractArrayStorage implements Storage {
 
     public void update(Resume r) {
         int index = getIndex(r.getUuid());
-        if (index == -1) {
+        if (index <= -1) {
             System.out.println("Ошибка выбора резюме для обновления");
         } else {
             storage[index] = r;
@@ -32,7 +32,7 @@ public abstract class AbstractArrayStorage implements Storage {
 
     public Resume get(String uuid) {
         int index = getIndex(uuid);
-        if (index < 0) {
+        if (index >= 0) {
             return storage[index];
         } else {
             System.out.println("Ошибка поиска резюме для вызова");
@@ -44,30 +44,37 @@ public abstract class AbstractArrayStorage implements Storage {
         return Arrays.copyOfRange(storage, 0, size);
     }
 
-    public void save(Resume r){
-        if(getIndex(r.getUuid()) != -1) {
-            System.out.println("Резюме" + r.getUuid() + "уже существует");
-        } else if (size >= STORAGE_LIMIT) {
-            System.out.println("Массив полон");
-        } else {
-            storage[size] = r;
-            //   r++;
-        }
+//    public void save(Resume r){
+//        if(getIndex(r.getUuid()) != -1) {
+//            System.out.println("Резюме" + r.getUuid() + "уже существует");
+//        } else if (size >= STORAGE_LIMIT) {
+//            System.out.println("Массив полон");
+//        } else {
+//            storage[size] = r;
+//            //   r++;
+//        }
+//
+//    }
 
-    }
+//    public void delete(String uuid) {
+//        int index = getIndex(uuid);
+//        if(index == -1) {
+//            System.out.println("Резюме" + uuid + "не существует");
+//        } else {
+//            storage[index] = storage[size - 1];
+//            storage[size - 1] = null;
+//            size--;
+//        }
+//
+//
+//    }
 
-    public void delete(String uuid) {
-        int index = getIndex(uuid);
-        if(index == -1) {
-            System.out.println("Резюме" + uuid + "не существует");
-        } else {
-            storage[index] = storage[size - 1];
-            storage[size - 1] = null;
-            size--;
-        }
-
-
-    }
+//    *AbstractArrayStorage*
+//            ~ update - плохая проверка if (index == -1) { - в SAStorage это может быть значение и -3 и -5 и т.д. (+)
+//        ~ get - if (index < 0) { - если индекс меньше нуля, разве допустимы такие индексы в массивах,
+//                что тебе вернется в return storage[index];? (+)
+//            там же от 0 и до +бесконечности
+//            ~ save/delete - убери отсюда пока (+)
 
     //protected abstract void doSave(Resume r);
 
