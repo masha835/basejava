@@ -17,12 +17,12 @@ public abstract class AbstractArrayStorage implements Storage {
     }
 
     public void clear() {
-        Array.fill(storage, 0, size, null);
+        Arrays.fill(storage, 0, size, null);
         size = 0;
     }
 
     public void update(Resume r) {
-        int index = getIndex(r.getUUid());
+        int index = getIndex(r.getUuid());
         if (index == -1) {
             System.out.println("Ошибка выбора резюме для обновления");
         } else {
@@ -30,24 +30,49 @@ public abstract class AbstractArrayStorage implements Storage {
         }
     }
 
-    public Resume[] getAll() {
-        return Array.copyOfArrays(storage, 0, size);
+    public Resume get(String uuid) {
+        int index = getIndex(uuid);
+        if (index != -1) {
+            return storage[index];
+        } else {
+            System.out.println("Ошибка поиска резюме для вызова");
+            return null;
+        }
     }
 
-    public void delete(String uuid) {
-
+    public Resume[] getAll() {
+        return Arrays.copyOfRange(storage, 0, size);
     }
 
     public void save(Resume r){
+        if(getIndex(r.getUuid()) != -1) {
+            System.out.println("Резюме" + r.getUuid() + "уже существует");
+        } else if (size >= STORAGE_LIMIT) {
+            System.out.println("Массив полон");
+        } else {
+            storage[size] = r;
+            //   r++;
+        }
 
+    }
+
+    public void delete(String uuid) {
+        int index = getIndex(uuid);
+        if(index == -1) {
+            System.out.println("Резюме" + uuid + "не существует");
+        } else {
+            storage[index] = storage[size - 1];
+            storage[size - 1] = null;
+            size--;
         }
 
 
+    }
 
-    protected abstract void doSave(Resume r);
+    //protected abstract void doSave(Resume r);
 
    // protected abstract void doDelete(String uuid);
 
-    protected abstract void getIndex(String uuid);
+    protected abstract int  getIndex(String uuid);
 
 }

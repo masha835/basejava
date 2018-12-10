@@ -8,15 +8,15 @@ import java.util.Arrays;
 
 public class SortedArrayStorage extends AbstractArrayStorage {
     private int counter = 0;
-    @Override
-    public void clear() {
+   // @Override
+    //public void clear() {
 
-    }
+   // }
 
-    @Override
-    public void update(Resume r) {
+   // @Override
+   // public void update(Resume r) {
 
-    }
+   // }
 
     @Override
     public void save(Resume r) {
@@ -47,10 +47,10 @@ public class SortedArrayStorage extends AbstractArrayStorage {
 
     }
 
-    @Override
-    public Resume[] getAll() {
-        return new Resume[0];
-    }
+  //  @Override
+   // public Resume[] getAll() {
+   //     return new Resume[0];
+  //  }
 
     @Override
     protected int getIndex(String uuid) {
@@ -59,14 +59,14 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }
 
-    @Override
-    protected int doSave(Resume r) {
+  //  @Override
+   // protected int doSave(Resume r) {
 
-    }
+   // }
 
-    @Override
+   // @Override
 
-    protected int doDelete (String uuid) {
+   // protected int doDelete (String uuid) {
 
-    }
+   // }
 }
